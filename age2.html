@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>age calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <label for="birthdate">Birth Date:</label>
+        <input type="date" id="birthdate">
+        <br><br>
+        <label for="targetdate">Target Date:</label>
+        <input type="date" id="targetdate">
+        <button onclick="calculateAge()">Calculate</button>
+        <div id="result"></div>
+      </div>
+      <script>
+        function calculateAge() {
+          var birthdate = new Date(document.getElementById("birthdate").value);
+          var targetdate = new Date(document.getElementById("targetdate").value);
+          var ageInMilliseconds = targetdate.getTime() - birthdate.getTime();
+          var ageInSeconds = ageInMilliseconds / 1000;
+          var ageInMinutes = ageInSeconds / 60;
+          var ageInHours = ageInMinutes / 60;
+          var ageInDays = ageInHours / 24;
+          var ageInYears = ageInDays / 365.15;
+          var years = Math.floor(ageInYears);
+          var remainingDays = ageInDays % 365.15;
+          var months = Math.floor(remainingDays / 30.4375);
+          var remainingDays = remainingDays % 30.4375;
+          var days = Math.floor(remainingDays);
+
+          document.getElementById("result").innerHTML = "You are " + years + " years, " + months + " months and " + days + " days old";
+        }
+      </script>
+</body>
+</html>
